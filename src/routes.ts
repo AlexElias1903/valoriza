@@ -3,7 +3,6 @@ import { CreateUserController } from "./controllers/CreateUserController";
 
 const router = Router();
 
-console.log(CreateUserController)
-router.post("/dale", CreateUserController)
+router.post("/users", CreateUserController)
 
 export { router }
