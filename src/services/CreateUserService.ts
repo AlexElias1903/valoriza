@@ -4,11 +4,12 @@ import { getCustomRepository } from "typeorm";
 interface IUserRequest {
     name: string;
     email: string;
+    password: string;
     admin?: boolean
 }
 
 class CreateUserService {
-    async execute({ name, email, admin }: IUserRequest) {
+    async execute({ name, email, admin, password }: IUserRequest) {
         const userRepository = getCustomRepository(UserRepositories);
 
         if (!email) {
@@ -26,7 +27,8 @@ class CreateUserService {
         const user = userRepository.create({
             name,
             email,
-            admin
+            admin,
+            password
         });
 
         await userRepository.save(user);
